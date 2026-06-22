@@ -1,0 +1,125 @@
+ Image djangocourse1-local-web Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 565B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 384B 0.1s done
+#2 DONE 0.2s
+
+#3 [internal] load metadata for docker.io/library/python:3.12-bullseye
+#3 DONE 1.5s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 76B 0.0s done
+#4 DONE 0.1s
+
+#5 [internal] load build context
+#5 transferring context: 4.44kB 0.0s done
+#5 DONE 0.1s
+
+#6 [1/9] FROM docker.io/library/python:3.12-bullseye@sha256:7cc929040c5e8cf6036c5099d62a83708427c131fb7a7c965b5ba51e995eea1c
+#6 resolve docker.io/library/python:3.12-bullseye@sha256:7cc929040c5e8cf6036c5099d62a83708427c131fb7a7c965b5ba51e995eea1c
+#6 resolve docker.io/library/python:3.12-bullseye@sha256:7cc929040c5e8cf6036c5099d62a83708427c131fb7a7c965b5ba51e995eea1c 0.1s done
+#6 DONE 0.2s
+
+#7 [7/9] COPY pyproject.toml poetry.lock ./
+#7 CACHED
+
+#8 [3/9] RUN apt install gettext -y
+#8 CACHED
+
+#9 [4/9] RUN mkdir /code
+#9 CACHED
+
+#10 [5/9] WORKDIR /code
+#10 CACHED
+
+#11 [2/9] RUN apt update
+#11 CACHED
+
+#12 [6/9] RUN pip install poetry
+#12 CACHED
+
+#13 [8/9] RUN poetry install --no-root
+#13 CACHED
+
+#14 [9/9] COPY . .
+#14 DONE 0.2s
+
+#15 exporting to image
+#15 exporting layers
+#15 exporting layers 0.4s done
+#15 exporting manifest sha256:ac1c6e2ac2ae9da43bb5f275efa6f84e94aefc4f2ab7e21359fb2032311162d6 0.1s done
+#15 exporting config sha256:1a5720f10135f51404ec0481bb16ec7d14be464e196e8bced39f29080e4ae33c 0.1s done
+#15 exporting attestation manifest sha256:fce93734c4cfd4b0f7775e1dfab5cb434dfbc7582d12505fc0200ca405868476
+#15 exporting attestation manifest sha256:fce93734c4cfd4b0f7775e1dfab5cb434dfbc7582d12505fc0200ca405868476 0.2s done
+#15 exporting manifest list sha256:35337d3ced2e365ea940558d9aa3f48f5e3bbefe2cf538fe9ac429b52c4d695b
+#15 exporting manifest list sha256:35337d3ced2e365ea940558d9aa3f48f5e3bbefe2cf538fe9ac429b52c4d695b 0.1s done
+#15 naming to docker.io/library/djangocourse1-local-web:latest
+#15 naming to docker.io/library/djangocourse1-local-web:latest 0.0s done
+#15 unpacking to docker.io/library/djangocourse1-local-web:latest
+#15 unpacking to docker.io/library/djangocourse1-local-web:latest 0.2s done
+#15 DONE 1.3s
+
+#16 resolving provenance for metadata file
+#16 DONE 0.1s
+ Image djangocourse1-local-web Built 
+ Network djangocourse1-local_default Creating 
+ Network djangocourse1-local_default Created 
+ Container djangocourse1-local-db-1 Creating 
+ Container djangocourse1-local-db-1 Created 
+ Container djangocourse1-local-web-1 Creating 
+ Container djangocourse1-local-web-1 Created 
+Attaching to db-1, web-1
+ Container djangocourse1-local-db-1 Starting 
+ Container djangocourse1-local-db-1 Started 
+ Container djangocourse1-local-db-1 Waiting 
+db-1  | 
+db-1  | PostgreSQL Database directory appears to contain a database; Skipping initialization
+db-1  | 
+db-1  | 2026-06-08 08:03:25.011 UTC [1] LOG:  starting PostgreSQL 18.4 (Debian 18.4-1.pgdg13+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+db-1  | 2026-06-08 08:03:25.011 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+db-1  | 2026-06-08 08:03:25.011 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+db-1  | 2026-06-08 08:03:25.099 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+db-1  | 2026-06-08 08:03:25.165 UTC [32] LOG:  database system was shut down at 2026-06-08 08:03:11 UTC
+db-1  | 2026-06-08 08:03:25.204 UTC [1] LOG:  database system is ready to accept connections
+ Container djangocourse1-local-db-1 Healthy 
+ Container djangocourse1-local-web-1 Starting 
+ Container djangocourse1-local-web-1 Started 
+web-1  | Watching for file changes with StatReloader
+web-1  | Performing system checks...
+web-1  | 
+web-1  | System check identified some issues:
+web-1  | 
+web-1  | WARNINGS:
+web-1  | ?: settings.ACCOUNT_AUTHENTICATION_METHOD is deprecated, use: settings.ACCOUNT_LOGIN_METHODS = {'email'}
+web-1  | ?: settings.ACCOUNT_EMAIL_REQUIRED is deprecated, use: settings.ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
+web-1  | ?: settings.ACCOUNT_USERNAME_REQUIRED is deprecated, use: settings.ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
+web-1  | 
+web-1  | System check identified 3 issues (0 silenced).
+web-1  | 
+web-1  | You have 43 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): account, admin, app, auth, contenttypes, sessions, sites, socialaccount.
+web-1  | Run 'python manage.py migrate' to apply them.
+web-1  | June 08, 2026 - 08:03:41
+web-1  | Django version 6.0.4, using settings 'djangocourse1.settings'
+web-1  | Starting development server at http://0.0.0.0:8000/
+web-1  | Quit the server with CONTROL-C.
+web-1  | 
+web-1  | WARNING: This is a development server. Do not use it in a production setting. Use a production WSGI or ASGI server instead.
+web-1  | For more information on production servers see: https://docs.djangoproject.com/en/6.0/howto/deployment/
+web-1  | {'PATH': '/root/.cache/pypoetry/virtualenvs/djangocourse1-MATOk_fk-py3.12/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'HOSTNAME': 'bd55bff9bc67', 'POSTGRES_USER': 'postgres', 'POSTGRES_PASSWORD': 'postgres', 'DATABASE_URL': 'postgresql://postgres:postgres@db:5432/djangocourse1', 'POSTGRES_DB': 'djangocourse1', 'LANG': 'C.UTF-8', 'GPG_KEY': '7169605F62C751356D054A26A821E680E5FA6305', 'PYTHON_VERSION': '3.12.11', 'PYTHON_SHA256': 'c30bb24b7f1e9a19b11b55a546434f74e739bb4c271a3e3a80ff4380d49f7adb', 'PYTHONUNBUFFERED': '1', 'HOME': '/root', 'VIRTUAL_ENV': '/root/.cache/pypoetry/virtualenvs/djangocourse1-MATOk_fk-py3.12', 'DJANGO_SETTINGS_MODULE': 'djangocourse1.settings', 'TZ': 'UTC', 'RUN_MAIN': 'true', 'SERVER_NAME': 'bd55bff9bc67', 'GATEWAY_INTERFACE': 'CGI/1.1', 'SERVER_PORT': '8000', 'REMOTE_HOST': '', 'CONTENT_LENGTH': '', 'SCRIPT_NAME': '', 'SERVER_PROTOCOL': 'HTTP/1.1', 'SERVER_SOFTWARE': 'WSGIServer/0.2', 'REQUEST_METHOD': 'HEAD', 'PATH_INFO': '/', 'QUERY_STRING': '', 'REMOTE_ADDR': '172.18.0.1', 'CONTENT_TYPE': 'text/plain', 'HTTP_HOST': '127.0.0.1:8000', 'HTTP_USER_AGENT': 'curl/8.13.0', 'HTTP_ACCEPT': '*/*', 'wsgi.input': <django.core.handlers.wsgi.LimitedStream object at 0x7941db1e0580>, 'wsgi.errors': <_io.TextIOWrapper name='<stderr>' mode='w' encoding='utf-8'>, 'wsgi.version': (1, 0), 'wsgi.run_once': False, 'wsgi.url_scheme': 'http', 'wsgi.multithread': True, 'wsgi.multiprocess': False, 'wsgi.file_wrapper': <class 'wsgiref.util.FileWrapper'>}
+web-1  | [08/Jun/2026 08:05:34] "HEAD / HTTP/1.1" 302 0
+db-1   | 2026-06-08 08:08:25.135 UTC [30] LOG:  checkpoint starting: time
+db-1   | 2026-06-08 08:08:45.800 UTC [30] LOG:  checkpoint complete: wrote 203 buffers (1.2%), wrote 3 SLRU buffers; 1 WAL file(s) added, 0 removed, 0 recycled; write=20.445 s, sync=0.110 s, total=20.665 s; sync files=173, longest=0.015 s, average=0.001 s; distance=1258 kB, estimate=1258 kB; lsn=0/1CF8D28, redo lsn=0/1CF8C98
+
+[Kweb-1 exited with code 0
+db-1   | 2026-06-08 08:11:40.170 UTC [1] LOG:  received fast shutdown request
+db-1   | 2026-06-08 08:11:40.187 UTC [1] LOG:  aborting any active transactions
+db-1   | 2026-06-08 08:11:40.191 UTC [1] LOG:  background worker "logical replication launcher" (PID 35) exited with exit code 1
+db-1   | 2026-06-08 08:11:40.207 UTC [30] LOG:  shutting down
+db-1   | 2026-06-08 08:11:40.241 UTC [30] LOG:  checkpoint starting: shutdown immediate
+db-1   | 2026-06-08 08:11:40.344 UTC [30] LOG:  checkpoint complete: wrote 7 buffers (0.0%), wrote 0 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.001 s, sync=0.030 s, total=0.138 s; sync files=3, longest=0.027 s, average=0.010 s; distance=52 kB, estimate=1137 kB; lsn=0/1D06068, redo lsn=0/1D06068
+db-1   | 2026-06-08 08:11:40.385 UTC [1] LOG:  database system is shut down
+
+[Kdb-1 exited with code 0

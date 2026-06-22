@@ -1,0 +1,13 @@
+{% extends "app/base_form.html" %}
+
+
+{% block head_title %}
+-Create articles
+{% endblock head_title %}
+
+{% block buttons %}
+    <div class="flex gap-4 pt-4">
+        <button type="submit" class="button primary">Start New Article</button>
+        <a href="{% url 'home' %}" class="button secondary">Cancel</a>
+    </div>
+{% endblock buttons %}

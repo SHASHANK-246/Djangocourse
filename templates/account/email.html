@@ -1,0 +1,56 @@
+
+{% extends "base.html" %}
+
+{% load widget_tweaks %}
+
+{% block base_content %}
+<main class="max-w-3xl mx-auto mt-10">
+    <div class="bg-white rounded-md p-6">
+        <h1 class="text-2xl font-semibold mb-4">Change Email</h1>
+
+        <p class="text-sm mb-4">Primary email: <strong>{{ user.email }}</strong></p>
+
+        {% if messages %}
+            <ul class="mb-4">
+            {% for message in messages %}
+                <li class="text-sm text-green-600">{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+
+        <section class="mb-6">
+            <h2 class="font-semibold mb-2">Email addresses</h2>
+            {% if addresses %}
+                <ul class="list-disc pl-6">
+                {% for address in addresses %}
+                    <li>
+                        {{ address.email }}
+                        {% if address.primary %}<span class="ml-2 font-semibold">(primary)</span>{% endif %}
+                        {% if not address.verified %}<span class="ml-2 text-sm text-yellow-600">(unverified)</span>{% endif %}
+                    </li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p class="text-sm text-gray-600">No secondary addresses found.</p>
+            {% endif %}
+        </section>
+
+        <section>
+            <h2 class="font-semibold mb-2">Add a new email</h2>
+            <form method="POST" class="space-y-4">
+                {% csrf_token %}
+                {% if form.non_field_errors %}
+                    <div class="text-red-600">{{ form.non_field_errors }}</div>
+                {% endif %}
+                <div>
+                    {% render_field form.email class="block w-full border-gray-300 rounded px-3 py-2" %}
+                    {% if form.email.errors %}
+                        <div class="text-red-600 text-sm">{{ form.email.errors }}</div>
+                    {% endif %}
+                </div>
+                <button type="submit" name="action_add" value="1" class="button primary">Add email</button>
+            </form>
+        </section>
+    </div>
+</main>
+{% endblock base_content %}

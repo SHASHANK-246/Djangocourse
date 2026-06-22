@@ -1,0 +1,100 @@
+web-1  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+web-1  | OSError: [Errno 5] Input/output error: '/code/app/locale'
+web-1  | Watching for file changes with StatReloader
+web-1  | Performing system checks...
+web-1  | 
+web-1  | System check identified some issues:
+web-1  | 
+web-1  | WARNINGS:
+web-1  | ?: settings.ACCOUNT_AUTHENTICATION_METHOD is deprecated, use: settings.ACCOUNT_LOGIN_METHODS = {'email'}
+web-1  | ?: settings.ACCOUNT_EMAIL_REQUIRED is deprecated, use: settings.ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
+web-1  | ?: settings.ACCOUNT_USERNAME_REQUIRED is deprecated, use: settings.ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
+web-1  | 
+web-1  | System check identified 3 issues (0 silenced).
+web-1  | Exception in thread django-main-thread:
+web-1  | Traceback (most recent call last):
+web-1  |   File "/root/.cache/pypoetry/virtualenvs/djangocourse1-MATOk_fk-py3.12/lib/python3.12/site-packages/django/db/backends/base/base.py", line 279, in ensure_connection
+web-1  |     self.connect()
+web-1  |   File "/root/.cache/pypoetry/virtualenvs/djangocourse1-MATOk_fk-py3.12/lib/python3.12/site-packages/django/utils/asyncio.py", line 26, in inner
+web-1  |     return func(*args, **kwargs)
+web-1  |            ^^^^^^^^^^^^^^^^^^^^^
+web-1  |   File "/root/.cache/pypoetry/virtualenvs/djangocourse1-MATOk_fk-py3.12/lib/python3.12/site-packages/django/db/backends/base/base.py", line 256, in connect
+web-1  |     self.connection = self.get_new_connection(conn_params)
+web-1  |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+web-1  |   File "/root/.cache/pypoetry/virtualenvs/djangocourse1-MATOk_fk-py3.12/lib/python3.12/site-packages/django/utils/asyncio.py", line 26, in inner
+web-1  |     return func(*args, **kwargs)
+web-1  |            ^^^^^^^^^^^^^^^^^^^^^
+web-1  |   File "/root/.cache/pypoetry/virtualenvs/djangocourse1-MATOk_fk-py3.12/lib/python3.12/site-packages/django/db/backends/postgresql/base.py", line 333, in get_new_connection
+web-1  |     connection = self.Database.connect(**conn_params)
+web-1  |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+web-1  |   File "/root/.cache/pypoetry/virtualenvs/djangocourse1-MATOk_fk-py3.12/lib/python3.12/site-packages/psycopg/connection.py", line 100, in connect
+web-1  |     attempts = conninfo_attempts(params)
+web-1  |                ^^^^^^^^^^^^^^^^^^^^^^^^^
+web-1  |   File "/root/.cache/pypoetry/virtualenvs/djangocourse1-MATOk_fk-py3.12/lib/python3.12/site-packages/psycopg/_conninfo_attempts.py", line 55, in conninfo_attempts
+web-1  |     raise last_exc
+web-1  | psycopg.OperationalError: failed to resolve host 'db': [Errno -2] Name or service not known
+web-1  | 
+web-1  | The above exception was the direct cause of the following exception:
+web-1  | 
+web-1  | Traceback (most recent call last):
+web-1  |   File "/usr/local/lib/python3.12/threading.py", line 1075, in _bootstrap_inner
+web-1  |     self.run()
+web-1  |   File "/usr/local/lib/python3.12/threading.py", line 1012, in run
+web-1  |     self._target(*self._args, **self._kwargs)
+web-1  |   File "/root/.cache/pypoetry/virtualenvs/djangocourse1-MATOk_fk-py3.12/lib/python3.12/site-packages/django/utils/autoreload.py", line 64, in wrapper
+web-1  |     fn(*args, **kwargs)
+web-1  |   File "/root/.cache/pypoetry/virtualenvs/djangocourse1-MATOk_fk-py3.12/lib/python3.12/site-packages/django/core/management/commands/runserver.py", line 137, in inner_run
+web-1  |     self.check_migrations()
+web-1  |   File "/root/.cache/pypoetry/virtualenvs/djangocourse1-MATOk_fk-py3.12/lib/python3.12/site-packages/django/core/management/base.py", line 591, in check_migrations
+web-1  |     executor = MigrationExecutor(connections[DEFAULT_DB_ALIAS])
+web-1  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+web-1  |   File "/root/.cache/pypoetry/virtualenvs/djangocourse1-MATOk_fk-py3.12/lib/python3.12/site-packages/django/db/migrations/executor.py", line 18, in __init__
+web-1  |     self.loader = MigrationLoader(self.connection)
+web-1  |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+web-1  |   File "/root/.cache/pypoetry/virtualenvs/djangocourse1-MATOk_fk-py3.12/lib/python3.12/site-packages/django/db/migrations/loader.py", line 59, in __init__
+web-1  |     self.build_graph()
+web-1  |   File "/root/.cache/pypoetry/virtualenvs/djangocourse1-MATOk_fk-py3.12/lib/python3.12/site-packages/django/db/migrations/loader.py", line 288, in build_graph
+web-1  |     self.applied_migrations = recorder.applied_migrations()
+web-1  |                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+web-1  |   File "/root/.cache/pypoetry/virtualenvs/djangocourse1-MATOk_fk-py3.12/lib/python3.12/site-packages/django/db/migrations/recorder.py", line 89, in applied_migrations
+web-1  |     if self.has_table():
+web-1  |        ^^^^^^^^^^^^^^^^
+web-1  |   File "/root/.cache/pypoetry/virtualenvs/djangocourse1-MATOk_fk-py3.12/lib/python3.12/site-packages/django/db/migrations/recorder.py", line 63, in has_table
+web-1  |     with self.connection.cursor() as cursor:
+web-1  |          ^^^^^^^^^^^^^^^^^^^^^^^^
+web-1  |   File "/root/.cache/pypoetry/virtualenvs/djangocourse1-MATOk_fk-py3.12/lib/python3.12/site-packages/django/utils/asyncio.py", line 26, in inner
+web-1  |     return func(*args, **kwargs)
+web-1  |            ^^^^^^^^^^^^^^^^^^^^^
+web-1  |   File "/root/.cache/pypoetry/virtualenvs/djangocourse1-MATOk_fk-py3.12/lib/python3.12/site-packages/django/db/backends/base/base.py", line 320, in cursor
+web-1  |     return self._cursor()
+web-1  |            ^^^^^^^^^^^^^^
+web-1  |   File "/root/.cache/pypoetry/virtualenvs/djangocourse1-MATOk_fk-py3.12/lib/python3.12/site-packages/django/db/backends/base/base.py", line 296, in _cursor
+web-1  |     self.ensure_connection()
+web-1  |   File "/root/.cache/pypoetry/virtualenvs/djangocourse1-MATOk_fk-py3.12/lib/python3.12/site-packages/django/utils/asyncio.py", line 26, in inner
+web-1  |     return func(*args, **kwargs)
+web-1  |            ^^^^^^^^^^^^^^^^^^^^^
+web-1  |   File "/root/.cache/pypoetry/virtualenvs/djangocourse1-MATOk_fk-py3.12/lib/python3.12/site-packages/django/db/backends/base/base.py", line 278, in ensure_connection
+web-1  |     with self.wrap_database_errors:
+web-1  |          ^^^^^^^^^^^^^^^^^^^^^^^^^
+web-1  |   File "/root/.cache/pypoetry/virtualenvs/djangocourse1-MATOk_fk-py3.12/lib/python3.12/site-packages/django/db/utils.py", line 94, in __exit__
+web-1  |     raise dj_exc_value.with_traceback(traceback) from exc_value
+web-1  |   File "/root/.cache/pypoetry/virtualenvs/djangocourse1-MATOk_fk-py3.12/lib/python3.12/site-packages/django/db/backends/base/base.py", line 279, in ensure_connection
+web-1  |     self.connect()
+web-1  |   File "/root/.cache/pypoetry/virtualenvs/djangocourse1-MATOk_fk-py3.12/lib/python3.12/site-packages/django/utils/asyncio.py", line 26, in inner
+web-1  |     return func(*args, **kwargs)
+web-1  |            ^^^^^^^^^^^^^^^^^^^^^
+web-1  |   File "/root/.cache/pypoetry/virtualenvs/djangocourse1-MATOk_fk-py3.12/lib/python3.12/site-packages/django/db/backends/base/base.py", line 256, in connect
+web-1  |     self.connection = self.get_new_connection(conn_params)
+web-1  |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+web-1  |   File "/root/.cache/pypoetry/virtualenvs/djangocourse1-MATOk_fk-py3.12/lib/python3.12/site-packages/django/utils/asyncio.py", line 26, in inner
+web-1  |     return func(*args, **kwargs)
+web-1  |            ^^^^^^^^^^^^^^^^^^^^^
+web-1  |   File "/root/.cache/pypoetry/virtualenvs/djangocourse1-MATOk_fk-py3.12/lib/python3.12/site-packages/django/db/backends/postgresql/base.py", line 333, in get_new_connection
+web-1  |     connection = self.Database.connect(**conn_params)
+web-1  |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+web-1  |   File "/root/.cache/pypoetry/virtualenvs/djangocourse1-MATOk_fk-py3.12/lib/python3.12/site-packages/psycopg/connection.py", line 100, in connect
+web-1  |     attempts = conninfo_attempts(params)
+web-1  |                ^^^^^^^^^^^^^^^^^^^^^^^^^
+web-1  |   File "/root/.cache/pypoetry/virtualenvs/djangocourse1-MATOk_fk-py3.12/lib/python3.12/site-packages/psycopg/_conninfo_attempts.py", line 55, in conninfo_attempts
+web-1  |     raise last_exc
+web-1  | django.db.utils.OperationalError: failed to resolve host 'db': [Errno -2] Name or service not known
