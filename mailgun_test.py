@@ -22,4 +22,5 @@ def send_email(to_address: str, subject: str, message: str):
         print("Success! Email sent.")
 
 
-send_email("shashanksbidarur@gmail.com","This is a test email","This is a test message.")
+if __name__ == "__main__":
+    send_email("shashanksbidarur@gmail.com","This is a test email","This is a test message.")
