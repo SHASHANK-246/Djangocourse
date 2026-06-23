@@ -1,8 +1,10 @@
 import requests
 import os
 
-MAILGUN_API_URL=os.getenv("MAILGUN_API_URL")
-FROM_EMAIL_ADDRESS=os.getenv("MAILGUN_FROM_EMAIL")
+# Use environment variables for sensitive credentials
+MAILGUN_API_URL = os.getenv("MAILGUN_API_URL")
+FROM_EMAIL_ADDRESS = os.getenv("MAILGUN_FROM_EMAIL")
+MAILGUN_API_KEY = os.getenv("MAILGUN_API_KEY")
 
 
 def send_email(to_address: str, subject: str, message: str):
