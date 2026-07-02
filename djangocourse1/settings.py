@@ -22,11 +22,11 @@ import os
 from pathlib import Path
 import dj_database_url
 
-ENV_STATE = os.getenv("ENV_STATE")
+ENV_STATE = os.getenv("ENV_STATE","development")
 
 try:
     import dj_database_url
-except Exception:
+except ImportError:
     dj_database_url = None
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -37,12 +37,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("SECRET_KEY")
+SECRET_KEY = os.getenv("SECRET_KEY", "test-secret-key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DEBUG", "False") == "True"
+DEBUG = os.getenv("DEBUG", "False").lower() == "true"
 
-ALLOWED_HOSTS = []
+allowed_hosts_env = os.getenv("ALLOWED_HOSTS")
+if allowed_hosts_env:
+    ALLOWED_HOSTS = [host.strip() for host in allowed_hosts_env.split(",") if host.strip()]
+elif DEBUG:
+    ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
+else:
+    # Railway and other platforms may not set ALLOWED_HOSTS explicitly during build.
+    ALLOWED_HOSTS = ["*"]
 
 ADMIN_URL = os.getenv("ADMIN_URL", "admin")
 
@@ -102,7 +109,7 @@ MIDDLEWARE = [
 
 if DEBUG:
     INSTALLED_APPS += [
-        "debug_toolbar"
+        "debug_toolbar",
         "django_browser_reload",
     ]
 
@@ -235,12 +242,13 @@ LOCALE_PATHS = [
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [BASE_DIR / "static"]
+STATICFILES_IGNORE_PATTERNS = ["input.css"]
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 STORAGES = {
     "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
-    "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"},
+    "staticfiles": {"BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage"},
 }
 
 # Development email backend: print emails to console to avoid SMTP errors

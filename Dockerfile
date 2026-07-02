@@ -1,4 +1,4 @@
-FROM python:3.12-bullseye
+FROM python:3.12-bullseye AS base
 
 ENV PYTHONUNBUFFERED=1
 
@@ -14,6 +14,8 @@ RUN pip install poetry
 
 COPY pyproject.toml poetry.lock ./
 
+FROM base AS development
+
 RUN poetry install --no-root
 
 COPY . .
@@ -22,4 +24,18 @@ EXPOSE 8000
 
 RUN chmod +x /code/start-django.sh
 
-ENTRYPOINT ["/code/start-django.sh" ]
+ENTRYPOINT ["/code/start-django.sh" ]                     
+
+FROM base AS production
+
+RUN poetry install
+
+RUN poetry install --only main
+
+COPY . .
+
+EXPOSE 8000
+
+RUN chmod +x /code/start-django.sh
+
+ENTRYPOINT ["/code/start-django.sh" ]  
