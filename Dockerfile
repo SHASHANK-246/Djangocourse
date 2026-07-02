@@ -28,9 +28,7 @@ ENTRYPOINT ["/code/start-django.sh" ]
 
 FROM base AS production
 
-RUN poetry install
-
-RUN poetry install --only main
+RUN poetry install --only main --no-root
 
 COPY . .
 
